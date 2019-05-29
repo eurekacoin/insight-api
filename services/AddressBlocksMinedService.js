@@ -1,6 +1,6 @@
 var Common = require('../lib/common');
 var async = require('async');
-var qtumcore = require('qtumcore-lib');
+var eurekacoincore = require('eurekacoincore-lib');
 var TYPE = 'BLOCKS_MINED';
 
 function AddressBlocksMinedService(options) {
@@ -91,7 +91,7 @@ AddressBlocksMinedService.prototype.start = function (next) {
 
         self._rapidProtectedUpdateTip(self.lastTipHeight);
 
-        self.node.services.qtumd.on('tip', self._rapidProtectedUpdateTip.bind(self));
+        self.node.services.eurekacoind.on('tip', self._rapidProtectedUpdateTip.bind(self));
 
         return next();
 
@@ -200,7 +200,7 @@ AddressBlocksMinedService.prototype.processBlock = function (blockHeight, next) 
 
 
     return async.waterfall([function (callback) {
-        return self.node.services.qtumd.getJsonBlock(blockHeight, function (err, response) {
+        return self.node.services.eurekacoind.getJsonBlock(blockHeight, function (err, response) {
 
             if (err) {
                 return callback(err);
@@ -220,11 +220,11 @@ AddressBlocksMinedService.prototype.processBlock = function (blockHeight, next) 
         var txHash;
 
         switch (block.flags) {
-            case qtumcore.Block.PROOF_OF_STAKE:
+            case eurekacoincore.Block.PROOF_OF_STAKE:
                 txHash = block.tx[1];
                 break;
 
-            case qtumcore.Block.PROOF_OF_WORK:
+            case eurekacoincore.Block.PROOF_OF_WORK:
                 txHash = block.tx[0];
                 break;
         }
@@ -246,10 +246,10 @@ AddressBlocksMinedService.prototype.processBlock = function (blockHeight, next) 
         var minedBy;
 
         switch (block.flags) {
-            case qtumcore.Block.PROOF_OF_STAKE:
+            case eurekacoincore.Block.PROOF_OF_STAKE:
                 minedBy = transaction.inputs[0].address;
                 break;
-            case qtumcore.Block.PROOF_OF_WORK:
+            case eurekacoincore.Block.PROOF_OF_WORK:
                 minedBy = transaction.outputs[0].address;
                 break;
         }

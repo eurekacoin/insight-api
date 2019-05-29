@@ -1,22 +1,22 @@
 {
-  "name": "qtum-insight-api",
-  "description": "A QTUM blockchain REST and web socket API service for Qtumcore Node.",
+  "name": "eurekacoin-insight-api",
+  "description": "A EUREKACOIN blockchain REST and web socket API service for EurekaCoincore Node.",
   "version": "0.0.23",
-  "repository": "https://github.com/qtumproject/insight-api.git",
+  "repository": "https://github.com/eurekacoin/insight-api.git",
   "contributors": [],
   "bugs": {
-    "url": "https://github.com/qtumproject/insight-api/issues"
+    "url": "https://github.com/eurekacoin/insight-api/issues"
   },
-  "homepage": "https://github.com/qtumproject/insight-api",
+  "homepage": "https://github.com/eurekacoin/insight-api",
   "license": "MIT",
   "keywords": [
     "insight",
     "insight api",
     "blockchain",
-    "qtum api",
+    "eurekacoin api",
     "blockchain api",
     "json",
-    "qtumcore"
+    "eurekacoincore"
   ],
   "engines": {
     "node": ">=0.12.0"
@@ -25,7 +25,7 @@
     "test": "NODE_ENV=test mocha -R spec --recursive"
   },
   "main": "lib",
-  "qtumcoreNode": "lib",
+  "eurekacoincoreNode": "lib",
   "dependencies": {
     "async": "*",
     "bignumber.js": "^4.0.2",
@@ -38,7 +38,7 @@
     "moment": "^2.19.3",
     "mongoose": "^4.11.8",
     "morgan": "^1.7.0",
-    "qtumcore-lib": "https://github.com/qtumproject/qtumcore-lib.git#master",
+    "eurekacoincore-lib": "https://github.com/eurekacoin/eurekacoincore-lib.git#master",
     "request": "^2.83.0",
     "web3": "^0.18.4"
   },

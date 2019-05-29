@@ -314,7 +314,7 @@ AddressBalanceService.prototype.start = function (next) {
 
         self._rapidProtectedUpdateTip(self.lastTipHeight);
 
-        self.node.services.qtumd.on('tip', self._rapidProtectedUpdateTip.bind(self));
+        self.node.services.eurekacoind.on('tip', self._rapidProtectedUpdateTip.bind(self));
 
         self.marketsService.on('updated', function () {
             return self.updateRicherThanCache(function (err) {

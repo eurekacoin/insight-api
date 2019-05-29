@@ -21,9 +21,9 @@
 * [Stake](#stake-statistic)
 * [Total Supply](#total-supply-statistic)
 
-A QTUM blockchain REST and web socket API service for [Qtumcore Node](https://github.com/qtumproject/qtumcore-node).
+A EUREKACOIN blockchain REST and web socket API service for [EurekaCoincore Node](https://github.com/eurekacoin/eurekacoincore-node).
 
-This is a backend-only service. If you're looking for the web frontend application, take a look at https://github.com/qtumproject/qtum-explorer.
+This is a backend-only service. If you're looking for the web frontend application, take a look at https://github.com/eurekacoin/eurekacoin-explorer.
 
 ## Getting Started
 
@@ -35,37 +35,37 @@ This is a backend-only service. If you're looking for the web frontend applicati
     ```  
 2. Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/  
 
-3. Install qtum-bitcore https://github.com/qtumproject/qtum-bitcore - with ZMQ ! 
+3. Install eurekacoin-bitcore https://github.com/eurekacoin/eurekacoin-bitcore - with ZMQ ! 
 
     ```bash
     # with ZMQ
     sudo apt-get install libzmq3-dev 
     ```  
-4. Install qtumcore-node  
+4. Install eurekacoincore-node  
 
     ```bash
-    npm i https://github.com/qtumproject/qtumcore-node.git#master
+    npm i https://github.com/eurekacoin/eurekacoincore-node.git#master
 
-    $(npm bin)/qtumcore-node create mynode
+    $(npm bin)/eurekacoincore-node create mynode
 
     cd mynode
 
-    $(npm bin)/qtumcore-node install https://github.com/qtumproject/insight-api.git#master
+    $(npm bin)/eurekacoincore-node install https://github.com/eurekacoin/insight-api.git#master
     ```  
-5. Edit qtumcore-node.json  
+5. Edit eurekacoincore-node.json  
 
     ```json
     {
       "network": "livenet",
       "port": 3001,
       "services": [
-        "qtumd",
-        "qtum-insight-api",
+        "eurekacoind",
+        "eurekacoin-insight-api",
         "web"
       ],
       "servicesConfig": {
-        "qtum-insight-api": {
-          "routePrefix": "qtum-insight-api",
+        "eurekacoin-insight-api": {
+          "routePrefix": "eurekacoin-insight-api",
           "rateLimiterOptions": {
           "whitelist": [
              "123.456.12.34",
@@ -79,7 +79,7 @@ This is a backend-only service. If you're looking for the web frontend applicati
           "db": {
             "host": "127.0.0.1",
             "port": "27017",
-            "database": "qtum-api-livenet",
+            "database": "eurekacoin-api-livenet",
             "user": "",
             "password": ""
           },
@@ -87,16 +87,16 @@ This is a backend-only service. If you're looking for the web frontend applicati
             "updateFromBlockHeight": 0
           }
         },
-        "qtumd": {
+        "eurekacoind": {
           "spawn": {
-        	  "datadir": "/home/user/.qtum",
-            "exec": "/home/user/qtum-bitcore/src/qtumd"
+        	  "datadir": "/home/user/.eurekacoin",
+            "exec": "/home/user/eurekacoin-bitcore/src/eurekacoind"
           }
         }
       }
     }
     ```  
-6. Edit qtum.conf  
+6. Edit eurekacoin.conf  
 
     ```
     server=1
@@ -119,28 +119,28 @@ This is a backend-only service. If you're looking for the web frontend applicati
 7. Run Node  
 
     ```
-    $(npm bin)/qtumcore-node start
+    $(npm bin)/eurekacoincore-node start
     ```  
 
-8. The API endpoints will be available by default at: `http://localhost:3001/qtum-insight-api/`  
+8. The API endpoints will be available by default at: `http://localhost:3001/eurekacoin-insight-api/`  
 
 ## Add-on Services
 
-There add-on service available to extend the functionality of Qtumcore:
+There add-on service available to extend the functionality of EurekaCoincore:
 
-- [QTUM Explorer](https://github.com/qtumproject/qtum-explorer)
+- [EUREKACOIN Explorer](https://github.com/eurekacoin/eurekacoin-explorer)
 
 ## Prerequisites
 
-**Note:** You can use an existing QTUM data directory, however `txindex`, `addressindex`, `timestampindex` and `spentindex` needs to be set to true in `qtum.conf`, as well as a few other additional fields.
+**Note:** You can use an existing EUREKACOIN data directory, however `txindex`, `addressindex`, `timestampindex` and `spentindex` needs to be set to true in `eurekacoin.conf`, as well as a few other additional fields.
 
 
 ## Query Rate Limit
 
-To protect the server, qtum-insight-api has a built it query rate limiter. It can be configurable in `qtumcore-node.json` with:
+To protect the server, eurekacoin-insight-api has a built it query rate limiter. It can be configurable in `eurekacoincore-node.json` with:
 ``` json
   "servicesConfig": {
-    "qtum-insight-api": {
+    "eurekacoin-insight-api": {
       "rateLimiterOptions": {
         "whitelist": ["::ffff:127.0.0.1"]
       }
@@ -151,17 +151,17 @@ To protect the server, qtum-insight-api has a built it query rate limiter. It ca
 Or disabled entirely with:
 ``` json
   "servicesConfig": {
-    "qtum-insight-api": {
+    "eurekacoin-insight-api": {
       "disableRateLimiter": true
     }
   }
   ```
   
-**Note:** `routePrefix` can be configurable in `qtumcore-node.json` with:
+**Note:** `routePrefix` can be configurable in `eurekacoincore-node.json` with:
 
 ``` json
   "servicesConfig": {
-    "qtum-insight-api": {
+    "eurekacoin-insight-api": {
       "routePrefix": "insight-api",
     }
   }
@@ -698,7 +698,7 @@ POST response:
   /insight-api/peer
 ```
 
-### Status of the QTUM Network
+### Status of the EUREKACOIN Network
 ```
   /insight-api/status?q=xxx
 ```

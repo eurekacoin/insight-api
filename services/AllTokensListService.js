@@ -19,8 +19,8 @@ function AllTokensListService(options) {
     this.lastTipHeight = 0;
     this.lastTipInProcess = false;
 
-    this._rapidProtectedUpdateTip(this.node.services.qtumd.height);
-    this.node.services.qtumd.on('tip', this._rapidProtectedUpdateTip.bind(this));
+    this._rapidProtectedUpdateTip(this.node.services.eurekacoind.height);
+    this.node.services.eurekacoind.on('tip', this._rapidProtectedUpdateTip.bind(this));
 
 }
 
