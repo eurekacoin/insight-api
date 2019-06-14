@@ -1003,7 +1003,7 @@ StatisticService.prototype.getTotal = function(nextCb) {
 StatisticService.prototype.getTotalSupply  = function() {
     var blockHeight = this.node.services.eurekacoind.height;
 
-    var supply = (new BigNumber(100000000)).plus((blockHeight - 5000) * 4);
+    var supply = (new BigNumber(149050000)).plus((blockHeight - 5000) * 0.05);
 
     return supply;
 }
